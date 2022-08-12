@@ -24,7 +24,7 @@ const questions = [
 ];
 
 const inquirerMenu = async () => {
-    console.clear();
+    //console.clear();
     console.log("===============================".green);
     console.log("  Seleccione una opción   ".white);
     console.log("===============================\n".green);
@@ -62,9 +62,9 @@ const leerInput = async (message) => {
     return desc;
 };
 
-const listadoTareasBorrar = async (tareas = []) => {
-    const choices = tareas.map((t, index) => {
-        return {value: t.id, name: `${index + 1} `.green + t.desc};
+const listarLugares = async (lugares = []) => {
+    const choices = lugares.map((l, index) => {
+        return {value: l.id, name: `${index + 1} `.green + l.nombre};
     });
 
     //Agregamos una opción a las choices
@@ -73,7 +73,9 @@ const listadoTareasBorrar = async (tareas = []) => {
         name: "0.".green + " Cancelar"
     });
 
-    const preguntas = [{type: "list", name: "id", message: "Borrar", choices}];
+    const preguntas = [
+        {type: "list", name: "id", message: "Seleccione", choices}
+    ];
 
     const {id} = await inquirer.prompt(preguntas);
     return id;
@@ -114,7 +116,7 @@ export {
     inquirerMenu,
     pausa,
     leerInput,
-    listadoTareasBorrar,
+    listarLugares,
     confirmar,
     mostrarListadoChecklist
 };
